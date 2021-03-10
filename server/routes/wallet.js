@@ -1,18 +1,13 @@
 const express = require('express');
+const router = express.Router();
 const app = express();
-var morgan  = require('morgan');
-app.use(morgan('dev'));
-// body parser
+
+//body parser related
 var bodyParser = require('body-parser'); 
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
-
-//routes
-const walletRoute = require('./routes/wallet');
-app.use('/wallet',walletRoute);
-
 
 //demo object
 var userProfile = {
@@ -25,13 +20,13 @@ var userProfile = {
 }]
 };
 
-
-//home route
-app.get('/',(req,res)=>{
-    res.send(JSON.stringify(userProfile));
-})
-
-//start server
-app.listen(3000,()=>{
-    console.log("Started the server!");
+//routes
+router.post('/',(req,res)=>
+{
+  //adding money to wallet
+  userProfile.wallet=parseInt(req.body.amt)+parseInt(userProfile.wallet);
+  res.send(JSON.stringify(userProfile));
 });
+
+//export
+module.exports = router;
