@@ -16,6 +16,8 @@ const userProfile = require("../models/user");
 /*-------------------routes---------------------*/
 router.post('/',(req,res)=>
 {
+  /*---------this route will be receiving name from body-----*/
+  
   userProfile.findOne({name : req.body.name},(err,user)=>{
     if(err){
       console.log(err);

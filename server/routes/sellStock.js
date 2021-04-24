@@ -16,6 +16,8 @@ const userProfile = require("../models/user");
 /*-------------------routes---------------------*/
 router.post('/',(req,res)=>
 {
+  /*---------this route will be receiving name, StockId and quantity from body-----*/
+
   // dummy stock (take id as 1, and quantity below 10)
   var targetStockId = parseInt(req.body.StockId);
   var sellingQuant = parseInt(req.body.quantity);
@@ -26,14 +28,22 @@ router.post('/',(req,res)=>
     else{
         //find target stock
         var index = user.stocks.findIndex((temp) => temp.id === targetStockId);
-
+        //error handling 
+        if(index===-1 || user.stocks[index].quantity < sellingQuant)
+        {
+          var errorObj={
+            name : "error"
+          };
+          res.send(JSON.stringify(errorObj));
+        }
+        else{
         // add money to wallet after sale
         var targetStockPrice=100; // real time value to be fetched using api
         var newWallet = (Number(targetStockPrice) * Number(sellingQuant))
         user.wallet = Number(newWallet.toFixed(2)) + Number(user.wallet.toFixed(2));
 
         // update quantity and remove the stock if quantity is 0
-        user.stocks[index].quantity = parseInt(user.stocks[index].quantity) - sellingQuant;
+        user.stocks[index].quantity = parseInt(user.stocks[index].quantity) - parseInt(sellingQuant);
        if(user.stocks[index].quantity === 0)
        {
          user.stocks.splice(index,1);
@@ -41,6 +51,7 @@ router.post('/',(req,res)=>
 
        user.save();
        res.send(JSON.stringify(user));
+      }
     }
   });
 
