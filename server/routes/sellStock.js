@@ -10,40 +10,51 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-/*-------------------demo object---------------------*/
-var userProfile = {
-  name:'Krishna',
-  email:'abc@gmail.com',
-  wallet:10.43,
-  stocks:[{name:'google',
-  id: 1
-,price: 523.0,quantity:10},{
-  name:'amazon',id: 21,price:1230.23,quantity:12
-}]
-};
+// importing db model
+const userProfile = require("../models/user");
 
 /*-------------------routes---------------------*/
 router.post('/',(req,res)=>
 {
+  /*---------this route will be receiving name, StockId and quantity from body-----*/
+
   // dummy stock (take id as 1, and quantity below 10)
   var targetStockId = parseInt(req.body.StockId);
   var sellingQuant = parseInt(req.body.quantity);
+  userProfile.findOne({name : req.body.name},(err,user)=>{
+    if(err){
+      console.log(err);
+    }
+    else{
+        //find target stock
+        var index = user.stocks.findIndex((temp) => temp.id === targetStockId);
+        //error handling 
+        if(index===-1 || user.stocks[index].quantity < sellingQuant)
+        {
+          var errorObj={
+            name : "error"
+          };
+          res.send(JSON.stringify(errorObj));
+        }
+        else{
+        // add money to wallet after sale
+        var targetStockPrice=100; // real time value to be fetched using api
+        var newWallet = (Number(targetStockPrice) * Number(sellingQuant))
+        user.wallet = Number(newWallet.toFixed(2)) + Number(user.wallet.toFixed(2));
 
-  //find target stock
-  var index = userProfile.stocks.findIndex((temp) => temp.id === targetStockId);
+        // update quantity and remove the stock if quantity is 0
+        user.stocks[index].quantity = parseInt(user.stocks[index].quantity) - parseInt(sellingQuant);
+       if(user.stocks[index].quantity === 0)
+       {
+         user.stocks.splice(index,1);
+        }
 
-  // add money to wallet after sale
-  var newWallet = (parseFloat(userProfile.stocks[index].price) * parseFloat(sellingQuant))
-  userProfile.wallet = parseFloat(newWallet.toFixed(2)) + parseFloat(userProfile.wallet.toFixed(2));
+       user.save();
+       res.send(JSON.stringify(user));
+      }
+    }
+  });
 
-  // update quantity and remove the stock if quantity is 0
-  userProfile.stocks[index].quantity = parseInt(userProfile.stocks[index].quantity) - sellingQuant;
-  if(userProfile.stocks[index].quantity === 0)
-  {
-      userProfile.stocks.splice(index,1);
-  }
-
-  res.send(JSON.stringify(userProfile));
 });
 
 /*-------------------export---------------------*/
