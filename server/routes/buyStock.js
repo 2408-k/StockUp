@@ -40,10 +40,10 @@ router.post('/',(req,res)=>
 
     //adding the stock
     if(index === -1)
-    userProfile.stocks.push(stockk);
+        userProfile.stocks.push(stockk);
     else
     {
-       userProfile.stocks[index].quantity= parseInt(userProfile.stocks[index].quantity) + buyingQuant;
+        userProfile.stocks[index].quantity= parseInt(userProfile.stocks[index].quantity) + buyingQuant;
     }
     
     //find target stock 

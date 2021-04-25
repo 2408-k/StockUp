@@ -14,7 +14,7 @@ app.use(express.urlencoded({
 var userProfile = {
   name:'Krishna',
   email:'abc@gmail.com',
-  wallet:10.1,
+  wallet: 10.1,
   stocks:[{name:'google',
   id: 1
 ,price: 523.0,quantity:10},{
@@ -26,7 +26,9 @@ var userProfile = {
 router.post('/',(req,res)=>
 {
   //adding money to wallet
-  var newWallet = parseFloat(req.body.amt)+parseFloat(userProfile.wallet)
+  console.log(req.body.amt);
+  var newWallet = parseFloat(req.body.amt)+parseFloat(userProfile.wallet);
+  
   userProfile.wallet = newWallet.toFixed(2);
   res.send(JSON.stringify(userProfile));
 });
