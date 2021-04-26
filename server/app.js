@@ -1,4 +1,5 @@
 /*--------------------------------setup----------------------------------------- */ 
+require('rootpath')();
 const express = require('express');
 const app = express();
 var morgan  = require('morgan');
@@ -9,6 +10,20 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
+// jwt
+const cors = require('cors');
+const jwt = require('_helpers/jwt');
+const errorHandler = require('_helpers/error-handler');
+app.use(cors());
+
+// use JWT auth to secure the api
+app.use(jwt());
+
+// api routes
+app.use('/users', require('./users/users.controller'));
+
+// global error handler
+app.use(errorHandler);
 
 //database
 const mongoose = require("mongoose");
