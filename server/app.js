@@ -74,6 +74,6 @@ const sellStockRoute = require('./routes/sellStock');
 app.use('/sellstock',sellStockRoute)
 
 /*-------------------------------starting the server-----------------------------*/
-app.listen(3000,()=>{
+app.listen(4000,()=>{
     console.log("Started the server!");
 });
