@@ -7,7 +7,8 @@ var config = JSON.stringify({
 export const userService = {
     login,
     logout,
-    getAll
+    getAll,
+    signup
 };
 
 function login(username, password) {
@@ -24,6 +25,26 @@ function login(username, password) {
             localStorage.setItem('user', JSON.stringify(user));
             //console.log(user);
             return user;
+        });
+}
+
+
+function signup(username, password) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    };
+    console.log("ok user service 1 ");
+
+    return fetch(`http://localhost:4000/users/signup`, requestOptions)
+        .then(handleResponse)
+        .then(() => {
+            console.log("ok user service");
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            //localStorage.setItem('user', JSON.stringify(user));
+            //console.log(user);
+            //return user;
         });
 }
 

@@ -7,7 +7,8 @@ import { Redirect } from 'react-router-dom';
 export const userActions = {
     login,
     logout,
-    getAll
+    getAll,
+    signup
 };
 
 function login(username, password) {
@@ -21,6 +22,28 @@ function login(username, password) {
                     history.push('/home');
                 },
                 error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
+    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
+}
+
+function signup(username, password) {
+    return dispatch => {
+        dispatch(request({ username }));
+
+        userService.signup(username, password)
+            .then(()=>{
+                    //console.log("ok user actions");
+                    history.push('/home');
+                },
+                error => {
+                    //console.log("error user actions");
                     dispatch(failure(error));
                     dispatch(alertActions.error(error));
                 }

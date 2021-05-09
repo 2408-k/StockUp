@@ -1,15 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { userActions } from '../../_actions';
 
-class LoginBox extends React.Component {
+class SignupPage extends React.Component {
     constructor(props) {
         super(props);
-
-        // reset login status
-        //this.props.dispatch(userActions.logout());
 
         this.state = {
             username: '',
@@ -33,7 +29,8 @@ class LoginBox extends React.Component {
         const { username, password } = this.state;
         const { dispatch } = this.props;
         if (username && password) {
-            dispatch(userActions.login(username, password));
+            console.log("ok signup page");
+            dispatch(userActions.signup(username, password));
         }
     }
 
@@ -42,7 +39,7 @@ class LoginBox extends React.Component {
         const { username, password, submitted } = this.state;
         return (
             <div className="col-md-6 col-md-offset-3">
-                <h2>Login</h2>
+                <h2>Signup!</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>
                         <label htmlFor="username">Username</label>
@@ -70,6 +67,7 @@ class LoginBox extends React.Component {
     }
 }
 
+
 function mapStateToProps(state) {
     const { loggingIn } = state.authentication;
     return {
@@ -77,5 +75,5 @@ function mapStateToProps(state) {
     };
 }
 
-const connectedLoginPage = connect(mapStateToProps)(LoginBox);
-export { connectedLoginPage as LoginBox }; 
+const connectedSignupPage = connect(mapStateToProps)(SignupPage);
+export { connectedSignupPage as SignupPage };

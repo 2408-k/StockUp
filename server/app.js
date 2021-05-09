@@ -27,41 +27,59 @@ app.use(errorHandler);
 
 //database
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true,useUnifiedTopology: true}).then(()=> console.log("Succesfully connected!")).catch(()=>console.log("db connection failed"));
+
+mongoose.connect("mongodb://localhost:27017/userDB", 
+{useNewUrlParser: true,useUnifiedTopology: true}).then(()=> console.log("Succesfully connected!"))
+.catch(()=>console.log("db connection failed"));
+
 mongoose.set("useCreateIndex", true);
 mongoose.Promise= global.Promise;
 
 /*----------------------  adding a dummy object  ------------------------------*/
 // importing db model
 const userProfile = require("./models/user");
-userProfile.findOne({name: 'Krishna'}, (err,useru) => {
-  if(useru === null)
-  {  const user = new userProfile( {
-      name:'Krishna',
-      wallet: 10.1,
-      email:'abc@gmail.com',
-      stocks:[{name:'google',
-      id: 1
-    ,quantity:10},{
-      name:'amazon',id: 21,quantity:12
-    }]
-    } );
+
+/*
+userProfile.deleteMany({},function(err){
+  if(err)
+    console.log(err);
+  else  
+    console.log("Success");
+});
+*/
+
+userProfile.findOne({username: 'prateek1106'}, (err,useru) => {
+  if(useru === null){  
+    const user = new userProfile( {
+        id: 7,
+        username: 'prateek1106',
+        password: 'prateek123',
+        firstName: 'Prateek',
+        lastName: 'Sharma',
+        wallet: 160,
+        email: 'prateeksharma7599@gmail.com',
+        stocks:[
+          {name:'google',id: 1 ,quantity:10},
+          {name:'amazon',id: 21,quantity:12}]
+    });
     user.save((err,user) => {
       if(err)
-      console.log(err);
-      else
-      {
-        console.log("Dummy object added to db");
+        console.log(err);
+      else{
+        console.log("Dummy object added!");
       }
-    } );
-   
-}
-  else
-  {
-      console.log("Dummy object already added to db",useru);
+    });
+    
+  }else{
+    console.log("Dummy object already added!");
   }
 });
 
+/*
+userProfile.find((err,useru) => {
+  console.log(useru);
+});
+*/
 
 /*--------------------------------- routes -------------------------------------*/
 const viewProfileRoute = require('./routes/viewProfile');

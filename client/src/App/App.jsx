@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { history } from '../_helpers';
 import { alertActions } from '../_actions';
 import { PrivateRoute } from '../_components';
-import { HomePage } from '../HomePage';
-//import { LoginPage } from '../LoginPage';
-
+import { HomePage } from '../components/HomePage';
+import { SignupPage } from'../components/SignupPage/SignupPage';
 import LoginPage from '../components/LoginPage/LoginPage';
 import StocksPage from '../components/StocksPage/StocksPage';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -37,11 +37,13 @@ class App extends React.Component {
                             <Route exact path="/">
                                 <Link exact to="/login"> <h4> Click here to go to Login Page</h4> </Link>
                                 <Link exact to="/stocksPage"> <h4>  Click here to go to Stocks Page </h4> </Link>
+                                <Link exact to="/signup"> <h4>  Click here to go to Signup Page </h4> </Link>
                             </Route>
 
                             <Route exact path="/stocksPage" component={StocksPage} />
                             <Route exact path="/login" component={LoginPage} />
-                            
+                            <Route exact path="/signup" component={SignupPage} />
+
                             <PrivateRoute exact path="/home" component={HomePage} />
                     </Router>
             </div>
