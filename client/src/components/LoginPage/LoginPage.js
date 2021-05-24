@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Navbar2 from '../Navbar2/Navbar2';
-import { LoginBox } from '../LoginBox/LoginBox';
+import LoginBox from '../LoginBox/LoginBox';
 
 const useStyles = makeStyles(theme => ({
   navbar: {

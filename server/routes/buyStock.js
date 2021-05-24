@@ -18,6 +18,19 @@ router.post('/',(req,res)=>
 {
      /*---------this route will be receiving name, StockId and quantity from body-----*/
   
+
+<<<<<<< HEAD
+    //find target stock
+    var index = userProfile.stocks.findIndex((temp) => temp.id === targetStockId);
+
+    //adding the stock
+    if(index === -1)
+        userProfile.stocks.push(stockk);
+    else
+    {
+        userProfile.stocks[index].quantity= parseInt(userProfile.stocks[index].quantity) + buyingQuant;
+    }
+=======
     // search in db
     userProfile.findOne({name : req.body.name},(err,user)=>{
         if(err){
@@ -53,6 +66,7 @@ router.post('/',(req,res)=>
            {
              user.stocks[index].quantity= parseInt(user.stocks[index].quantity) + buyingQuant;
             }
+>>>>>>> 2d689b6eb2b409d39b7b6f2970e952d51f5ad038
     
            //find target stock 
            index = user.stocks.findIndex((temp) => temp.id === targetStockId);

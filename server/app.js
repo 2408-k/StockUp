@@ -1,5 +1,4 @@
 /*--------------------------------setup----------------------------------------- */ 
-require('rootpath')();
 const express = require('express');
 const app = express();
 var morgan  = require('morgan');
@@ -10,76 +9,44 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
-// jwt
-const cors = require('cors');
-const jwt = require('_helpers/jwt');
-const errorHandler = require('_helpers/error-handler');
-app.use(cors());
-
-// use JWT auth to secure the api
-app.use(jwt());
-
-// api routes
-app.use('/users', require('./users/users.controller'));
-
-// global error handler
-app.use(errorHandler);
 
 //database
 const mongoose = require("mongoose");
-
-mongoose.connect("mongodb://localhost:27017/userDB", 
-{useNewUrlParser: true,useUnifiedTopology: true}).then(()=> console.log("Succesfully connected!"))
-.catch(()=>console.log("db connection failed"));
-
+mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true,useUnifiedTopology: true}).then(()=> console.log("Succesfully connected!")).catch(()=>console.log("db connection failed"));
 mongoose.set("useCreateIndex", true);
 mongoose.Promise= global.Promise;
 
 /*----------------------  adding a dummy object  ------------------------------*/
 // importing db model
 const userProfile = require("./models/user");
-
-/*
-userProfile.deleteMany({},function(err){
-  if(err)
-    console.log(err);
-  else  
-    console.log("Success");
-});
-*/
-
-userProfile.findOne({username: 'prateek1106'}, (err,useru) => {
-  if(useru === null){  
-    const user = new userProfile( {
-        id: 7,
-        username: 'prateek1106',
-        password: 'prateek123',
-        firstName: 'Prateek',
-        lastName: 'Sharma',
-        wallet: 160,
-        email: 'prateeksharma7599@gmail.com',
-        stocks:[
-          {name:'google',id: 1 ,quantity:10},
-          {name:'amazon',id: 21,quantity:12}]
-    });
+userProfile.findOne({name: 'Krishna'}, (err,useru) => {
+  if(useru === null)
+  {  const user = new userProfile( {
+      name:'Krishna',
+      wallet: 10.1,
+      email:'abc@gmail.com',
+      stocks:[{name:'google',
+      id: 1
+    ,quantity:10},{
+      name:'amazon',id: 21,quantity:12
+    }]
+    } );
     user.save((err,user) => {
       if(err)
-        console.log(err);
-      else{
-        console.log("Dummy object added!");
+      console.log(err);
+      else
+      {
+        console.log("Dummy object added to db");
       }
-    });
-    
-  }else{
-    console.log("Dummy object already added!");
+    } );
+   
+}
+  else
+  {
+      console.log("Dummy object already added to db",useru);
   }
 });
 
-/*
-userProfile.find((err,useru) => {
-  console.log(useru);
-});
-*/
 
 /*--------------------------------- routes -------------------------------------*/
 const viewProfileRoute = require('./routes/viewProfile');
@@ -92,6 +59,6 @@ const sellStockRoute = require('./routes/sellStock');
 app.use('/sellstock',sellStockRoute)
 
 /*-------------------------------starting the server-----------------------------*/
-app.listen(4000,()=>{
+app.listen(3000,()=>{
     console.log("Started the server!");
 });
