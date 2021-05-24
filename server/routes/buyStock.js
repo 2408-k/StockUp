@@ -10,16 +10,31 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-// importing db model
-const userProfile = require("../models/user");
+/*-------------------demo object---------------------*/
+var userProfile = {
+    name:'Krishna',
+    email:'abc@gmail.com',
+    wallet:0,
+    stocks:[{name:'google',
+    id: 1
+,price: 523.0,quantity:10},{
+    name:'amazon',id: 21,price:1230.23,quantity:12
+}]
+};
 
 /*-------------------routes---------------------*/
 router.post('/',(req,res)=>
 {
-     /*---------this route will be receiving name, StockId and quantity from body-----*/
-  
+    // dummy stock
+    var stockk = {
+        name: 'microsoft',
+        id: 12,
+        price: 42.42,
+        quantity: 4
+    };
+    var targetStockId = parseInt(stockk.id);
+    var buyingQuant = parseInt(stockk.quantity);
 
-<<<<<<< HEAD
     //find target stock
     var index = userProfile.stocks.findIndex((temp) => temp.id === targetStockId);
 
@@ -30,57 +45,16 @@ router.post('/',(req,res)=>
     {
         userProfile.stocks[index].quantity= parseInt(userProfile.stocks[index].quantity) + buyingQuant;
     }
-=======
-    // search in db
-    userProfile.findOne({name : req.body.name},(err,user)=>{
-        if(err){
-          console.log(err);
-        }
-        else{
-           // dummy stock
-          var targetStockId = parseInt(req.body.StockId);
-          var buyingQuant = parseInt(req.body.quantity);
-          var stockk = {name:'hardcode', //will have to fetch exact details using API !!
-                        id: targetStockId
-                       ,quantity:buyingQuant};
-         
-          
-            //find target stock
-            var index = user.stocks.findIndex((temp) => temp.id === targetStockId);
-            console.log(user.wallet);
-            //error handling 
-            var targetStockPriceDummy = 100; // real time value to be fetched using an api
-            var newWallet = (parseFloat(targetStockPriceDummy) * parseFloat(buyingQuant));
-            if(newWallet > user.wallet)
-            {
-              var errorObj={
-                name : "error"
-              };
-              res.send(JSON.stringify(errorObj));
-            }
-           else{
-           //adding the stock
-           if(index === -1)
-           user.stocks.push(stockk);
-           else
-           {
-             user.stocks[index].quantity= parseInt(user.stocks[index].quantity) + buyingQuant;
-            }
->>>>>>> 2d689b6eb2b409d39b7b6f2970e952d51f5ad038
     
-           //find target stock 
-           index = user.stocks.findIndex((temp) => temp.id === targetStockId);
-  
-           //updating the wallet after purchase
-           user.wallet = parseFloat(user.wallet.toFixed(2)) - parseFloat(newWallet.toFixed(2));
+    //find target stock 
+    index = userProfile.stocks.findIndex((temp) => temp.id === targetStockId);
 
-           user.save();
-           res.send(JSON.stringify(user));
-          }
-        }
-      });
-  
+    //updating the wallet after purchase
+    var newWallet = (parseFloat(userProfile.stocks[index].price) * parseFloat(buyingQuant))
+    userProfile.wallet = parseFloat(userProfile.wallet.toFixed(2)) - parseFloat(newWallet.toFixed(2));
 
+
+    res.send(JSON.stringify(userProfile));
 });
 
 /*-------------------export---------------------*/
