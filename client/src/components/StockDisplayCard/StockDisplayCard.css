@@ -1,0 +1,77 @@
+.stock-card{
+    background-color: #d3e0ea;
+    border-radius: 20px;
+    margin-left: 10px;
+    border-style: ridge;
+    border-color: white;
+    border-width: 3px;
+    margin-bottom: 20px;
+}
+
+.company-letter-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.company-letter{
+    font-size: 30px;
+    text-align: center;
+    color: #21094e;
+}
+
+.company-details{
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sell-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sell-button{
+    width: 100%;
+    text-align: center;
+}
+
+@media screen and (max-width: 991px ){
+
+    .company-letter{
+        margin-top: 3vh;
+    }
+
+    .company-details{
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+
+    .sell-button{
+        width: 30%;
+        margin-bottom: 4vh;
+    }
+}
+
+@media screen and (max-width: 767px ){
+    
+    .stock-card{
+        margin: auto;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 575px ){
+
+    .company-details{
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        margin-left: 20%;
+        display: flex;
+        justify-content: left;
+        align-items: left;
+    }
+}

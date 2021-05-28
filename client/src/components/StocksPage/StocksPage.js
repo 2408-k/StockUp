@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import ListStock from "../ListStock/ListStock";
 import StockInfo from "../StockInfo/StockInfo";
+
 const StocksPage = () => {
   let [tarStock, setTarStock] = useState("");
   const targetStock = (tar) => {

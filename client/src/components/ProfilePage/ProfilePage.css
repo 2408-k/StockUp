@@ -1,0 +1,55 @@
+.box1{
+    background-color: #e3f6f5;
+    height: 100vh;
+    padding-top: 25vh;
+}
+
+.box2{
+    background-color: #e3f6f5;
+    height: 100vh;
+    padding-top: 35vh;
+}
+
+.dp-image{
+    height: 30vh;
+    width: 30vh;
+    border-radius: 50%;
+}
+
+.user-details{
+    margin-top: 10vh;
+}
+
+.view-stocks-button{
+    margin-top: 5vh;
+    margin-bottom: 3vh;
+    width: 18vh;
+}
+
+.my-wallet-button{
+    width: 18vh;
+    margin-bottom: 3vh;
+}
+
+.logout-button{
+    width: 18vh;
+}
+
+@media screen and (max-width: 767px){
+    
+    .welcome-message{
+        margin: auto;
+        width: 50%;
+        text-align: center;
+        padding-bottom: 15vh;
+    }
+
+    .user-details{
+        margin:auto;
+        width: 50%;
+    }
+
+    .box2{
+        padding-top: 10vh;
+    }
+}

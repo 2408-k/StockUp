@@ -1,79 +1,98 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { userActions } from '../../_actions';
+import react from 'react';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Navbar2 from '../Navbar2/Navbar2';
+import SignupBox from '../SignupBox/SignupBox';
 
-class SignupPage extends React.Component {
-    constructor(props) {
-        super(props);
+const useStyles = makeStyles(theme => ({
+  navbar: {
+    zIndex: '1000',
+  },
+  loginBox: {
+      height: '90vh',
+  },
+  loginBoxInner: {
+    [theme.breakpoints.up('xs')]: {
+      margin: 'auto',
+      height: '80%',
+      width: '80%',
+    },
+    [theme.breakpoints.up('md')]: {
+      margin: 'auto',
+      height: '60%',
+      width: '60%'
+    },
+    [theme.breakpoints.up('lg')]: {
+      margin: 'auto',
+      height: '60%',
+      width: '40%'
+    },
+  },
+  secondBox: {
+    height: '100vh',
+    width: '100 vw',
+    backgroundColor: '#dae1e7'
+  },
+  thirdBox: {
+    height: '100vh',
+    width: '100 vw',
+    backgroundColor: '#1687a7'
+  },
+  footer: {
 
-        this.state = {
-            username: '',
-            password: '',
-            submitted: false
-        };
+  },
+  footerArea1: {
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+  },
+  footerArea2: {
 
-    handleChange(e) {
-        const { name, value } = e.target;
-        this.setState({ [name]: value });
-    }
+  },
+  footerArea3: {
 
-    handleSubmit(e) {
-        e.preventDefault();
+  },
+  footerBottom: {
 
-        this.setState({ submitted: true });
-        const { username, password } = this.state;
-        const { dispatch } = this.props;
-        if (username && password) {
-            console.log("ok signup page");
-            dispatch(userActions.signup(username, password));
-        }
-    }
+  }
+}));
 
-    render() {
-        const { loggingIn } = this.props;
-        const { username, password, submitted } = this.state;
-        return (
-            <div className="col-md-6 col-md-offset-3">
-                <h2>Signup!</h2>
-                <form name="form" onSubmit={this.handleSubmit}>
-                    <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>
-                        <label htmlFor="username">Username</label>
-                        <input type="text" className="form-control" name="username" value={username} onChange={this.handleChange} />
-                        {submitted && !username &&
-                            <div className="help-block">Username is required</div>
-                        }
-                    </div>
-                    <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} />
-                        {submitted && !password &&
-                            <div className="help-block">Password is required</div>
-                        }
-                    </div>
-                    <div className="form-group">
-                        <button className="btn btn-primary">Login</button>
-                        {loggingIn &&
-                            <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                        }
-                    </div>
-                </form>
-            </div>
-        );
-    }
+function SignupPage() {
+  const classes = useStyles();
+  return (
+    <Grid container>
+      <Grid item xs={12} className={classes.navbar}> 
+        <Navbar2 />
+      </Grid>
+      <Grid item xs={0} sm={4} md={6} />
+      <Grid item container xs={12} sm={8} md={6} className={classes.loginBox}>
+          <Grid item className={classes.loginBoxInner}>
+            <SignupBox />
+          </Grid>
+      </Grid>
+      <Grid item xs={12} className={classes.secondBox}>
+        <h1> second area </h1>
+      </Grid>
+      <Grid item xs= {12} className={classes.thirdBox}>
+        <h1> Third area </h1>
+      </Grid>
+
+      {/* Footer */} 
+      <Grid item xs={12} container className={classes.footer}>
+        <Grid item xs={12} md={4} className={classes.footerArea1} >
+          footer area 1
+        </Grid > 
+        <Grid item xs={12} md={4} className={classes.footerArea2} >
+          footer area 2
+        </Grid> 
+        <Grid item xs={12} md={4} className={classes.footerArea3} >
+          footer area 3
+        </Grid > 
+      </Grid>
+      <Grid item xs={12} className={classes.footerBottom}>
+          Copyright 2021 
+      </Grid>
+    </Grid>
+    );
 }
 
-
-function mapStateToProps(state) {
-    const { loggingIn } = state.authentication;
-    return {
-        loggingIn
-    };
-}
-
-const connectedSignupPage = connect(mapStateToProps)(SignupPage);
-export { connectedSignupPage as SignupPage };
+export default SignupPage;

@@ -1,0 +1,70 @@
+.wallet-box{
+    background-color: #eeeeee;
+    height: 100vh;
+    padding-top: 20vh;
+}
+
+.my-wallet-heading{
+    text-align: center;
+    margin-bottom: 3vh;
+    color: green;
+}
+
+.wallet{
+    width: 60%;
+    height: 70%;
+    margin: auto;
+    margin-top: 5%;
+}
+
+.wallet-pic{
+    height: 40vh;
+    width: 40vh;
+    border-radius: 50%;
+}
+
+.balance{
+    margin-top: 4vh;
+    text-align: center;
+}
+
+.button-center{
+    text-align: center;
+}
+
+.add-money-button{
+    margin-top: 2vh;
+    width: 22vh;
+}
+
+.remove-money-button{
+    margin-top: 2vh;
+    width: 22vh;
+}
+
+.stocks-box{
+    background-color: #eeeeee;
+    height: 100vh;
+    padding-top: 20vh;
+}
+
+.my-stocks-heading{
+    margin-bottom: 5vh;
+    color: mediumblue;
+}
+
+@media screen and (max-width: 767px ){
+    
+    .wallet-box{
+        background-color: #d8e3e7;
+    }
+
+    .stocks-box{
+        padding-top: 7vh;
+    }
+
+    .my-stocks-heading{
+        text-align: center;
+    }
+
+}
