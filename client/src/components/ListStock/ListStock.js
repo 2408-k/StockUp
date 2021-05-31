@@ -38,10 +38,12 @@ const ListStock = () => {
   ];
   return (
     <div className="ListStock">
-      <div className="Stock-cards">
-        {" "}
+      <div className="Stock-cards row">
+  
         {stockList.map((stock) => (
+          <div className="col-lg-4 col-12">
           <StockCard name={stock.name} symbol={stock.symbol} iurl={stock.img} />
+          </div>
         ))}
       </div>
     </div>

@@ -50,7 +50,7 @@ const WalletPage= () =>
 
                     <div class="row justify-content-center">
                         <div class="">
-                            <img src="https://icons.iconarchive.com/icons/flat-icons.com/flat/512/Wallet-icon.png" alt="wallet picture" class="wallet-pic" />
+                            <img src="https://icons.iconarchive.com/icons/flat-icons.com/flat/512/Wallet-icon.png" class="wallet-pic" />
                         </div>
                     </div>
 
