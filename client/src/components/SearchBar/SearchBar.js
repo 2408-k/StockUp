@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './SearchBar.css';
+import "./SearchBar.css";
 
 const SearchBar = (props) => {
   let [stock, setStock] = useState("");
@@ -13,14 +13,24 @@ const SearchBar = (props) => {
     setStock("");
   };
   return (
-    <div className="searchBox">
+    <div className="SearchBox">
       <form onSubmit={submitHandler}>
-          <div className="searchLabel">
+        <div className="label">
           <label>Search for a stock using its symbol</label>
-          </div>
-       
-        <input type="text" value={stock} onChange={stockChangeHandler} />
-        <button type="submit">Submit</button>
+        </div>
+        <div className="input">
+          {" "}
+          <input
+            type="text"
+            className="form-control "
+            value={stock}
+            onChange={stockChangeHandler}
+          />
+        </div>
+
+        <button type="submit" className="btn btn-primary btn-sm button">
+          Submit
+        </button>
       </form>
     </div>
   );

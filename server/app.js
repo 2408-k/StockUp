@@ -2,10 +2,11 @@
 const express = require("express");
 const app = express();
 const bcrypt = require("bcrypt");
+const cors = require("cors");
 //body parser related
 
 app.use(express.json());
-
+app.use(cors());
 app.use(
   express.urlencoded({
     extended: true,
@@ -80,7 +81,8 @@ app.use("/login", loginRoute);
 const signupRoute = require("./routes/signup");
 const User = require("./models/user");
 app.use("/signup", signupRoute);
-
+const payment = require("./routes/stripeGateway");
+app.use("/payment",payment);
 /*-------------------------------starting the server-----------------------------*/
 app.listen(4000, () => {
   console.log("Started the server!");

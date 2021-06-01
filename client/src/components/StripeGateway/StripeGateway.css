@@ -1,0 +1,43 @@
+.background-blur{
+    opacity: 20%;
+}
+
+.alert-box-1{
+    background-color: #f8f5f1;
+    position: fixed;
+    display: block;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: outset;
+ 
+    border-width: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.message{
+    margin-top: 3vh;
+    margin-bottom: 4vh;
+    color: #0061a8;
+}
+
+.amount{
+    margin-bottom: 1vh;
+}
+
+.key{
+    margin-bottom: 3vh;
+}
+
+.add-button{  
+    margin-right: 2vh;
+}
+
+.cancel-button{
+    margin-left: 2vh;
+}
+
+.buttons{
+    margin-bottom: 4vh; 
+}

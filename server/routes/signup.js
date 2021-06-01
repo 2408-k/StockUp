@@ -19,7 +19,10 @@ const jwt = require("jsonwebtoken");
 /*-------------------routes---------------------*/
 router.post("/", (req, res) => {
   req.body = JSON.parse(Object.keys(req.body)[0]); // comment this when working with postman
+<<<<<<< HEAD
   
+=======
+>>>>>>> 61a98d34d1048159783f408f14e9369dfa2fca96
   userProfile.findOne({ name: req.body.name }, (err, useru) => {
     if (useru === null) {
       const password = req.body.password;

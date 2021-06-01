@@ -1,61 +1,39 @@
-.searchBox{
-    border-radius: 10px;
-    background-color: aquamarine !important;
-    margin-left: 30rem;
-    margin-right: 6rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    width: 20rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+.SearchBox{
+	align-content: center;
+	margin-left: auto;
+margin-right: auto;
+border-radius: 20px;
+background-color: #fff6f0;
 }
-.searchLabel{
-    margin-left: 2rem;
-}
-form label,
-form input {
-	float:left;
-	clear:both;
+.label{
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-form input {
-	margin:15px 0;
-    margin-left: 1rem;
-	padding:15px 10px;
-	width:90%;
-	outline:none;
-	border:1px solid #bbb;
-	border-radius:20px;
-	display:inline-block;
-	-webkit-box-sizing:border-box;
-	   -moz-box-sizing:border-box;
-	        box-sizing:border-box;
-    -webkit-transition:0.2s ease all;
-	   -moz-transition:0.2s ease all;
-	    -ms-transition:0.2s ease all;
-	     -o-transition:0.2s ease all;
-	        transition:0.2s ease all;
+.input{
+	background-color: white;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+
 }
 
-button {
-	padding:15px 50px;
-	width:auto;
-	background:#1abc9c;
-	border:none;
-	color:white;
-	cursor:pointer;
-
-	-webkit-transition:0.2s ease all;
-	   -moz-transition:0.2s ease all;
-	    -ms-transition:0.2s ease all;
-	     -o-transition:0.2s ease all;
-	        transition:0.2s ease all;
+.button{
+	margin-left: 15%;
+	margin-bottom: 3%;
+}
+@media screen and (min-width: 720px) {
+.SearchBox{
+	width: 30%;
+	margin-bottom: 40px;
+}	
 }
 
-button:hover {
-	opacity:0.8;
-}
-
-button:active {
-	opacity:0.4;
-}
+@media screen and (max-width: 720px) {
+	.SearchBox{
+		width: 60%;
+		margin-bottom: 20px;
+	}	
+	}
+	

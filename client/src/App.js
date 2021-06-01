@@ -1,4 +1,4 @@
-import react from 'react';
+import react,{useState} from 'react';
 import LoginPage from './components/LoginPage/LoginPage';
 import SignupPage from './components/SignupPage/SignupPage';
 import StocksPage from './components/StocksPage/StocksPage';

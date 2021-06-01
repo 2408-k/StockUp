@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import ListStock from "../ListStock/ListStock";
 import StockInfo from "../StockInfo/StockInfo";
-
+import "./StocksPage.css";
 const StocksPage = () => {
   let [tarStock, setTarStock] = useState("");
   const targetStock = (tar) => {
@@ -12,7 +12,7 @@ const StocksPage = () => {
     return <StockInfo targStock={tarStock} />;
   }
   return (
-    <div>
+    <div className="Stock">
       <SearchBar targetted={targetStock} />
       <ListStock />
     </div>
