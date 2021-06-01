@@ -15,7 +15,7 @@ function ProfilePage ()
             fetch("http://localhost:4000/authenticate", {
                 // Adding body or contents to send
                 body: JSON.stringify({
-                    authtoken: 'hellook',
+                    authtoken: token,
                 }),
                 
                 headers: {

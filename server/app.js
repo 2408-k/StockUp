@@ -27,7 +27,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log("Succesfully connected!"))
-  .catch(() => console.log("db connection failed"));
+  .catch((err) => console.log("db connection failed",err));
 mongoose.set("useCreateIndex", true);
 mongoose.Promise = global.Promise;
 
