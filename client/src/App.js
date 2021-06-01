@@ -16,8 +16,7 @@ import {
 
 function App() {
   return (
-    <div>
-
+    <div>        
         <Route exact path="/">
           <Link exact to="/login"> <h4> Click here to go to Login Page</h4> </Link>
           <Link exact to="/stocksPage"> <h4>  Click here to go to Stocks Page </h4> </Link>

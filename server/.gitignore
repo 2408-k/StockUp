@@ -1,35 +1,4 @@
-Skip to content
-Why GitHub? 
-Team
-Enterprise
-Explore 
-Marketplace
-Pricing 
-Search
 
-Sign in
-Sign up
-2408-k
-/
-StockUp
-01
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-StockUp/server/.gitignore
-@2408-k
-2408-k Added basic login and signup functionalities
-Latest commit 258a582 2 days ago
- History
- 2 contributors
-@ProgressHiveIO@2408-k
-40 lines (29 sloc)  591 Bytes
-  
 # Logs
 logs
 *.log
@@ -70,16 +39,3 @@ typings
 .node_repl_history
 
 .env
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
