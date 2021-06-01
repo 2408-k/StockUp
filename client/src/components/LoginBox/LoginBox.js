@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -39,6 +40,9 @@ export default function LoginBox() {
   const classes = useStyles();
   const [enteredName, setEnteredName] = useState("");
   const [enteredPwd, setEnteredPwd] = useState("");
+
+  const dispatch = useDispatch();
+
   const nameChangeHandler = (event) => {
     setEnteredName(event.target.value);
   };
@@ -71,7 +75,8 @@ export default function LoginBox() {
 
       // Displaying results to console
       .then((json) => {
-        console.log(json);
+        //console.log(json);
+        dispatch({ type: 'update' , token : json.token });
       });
   };
 

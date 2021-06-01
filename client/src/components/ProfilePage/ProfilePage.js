@@ -1,9 +1,40 @@
-import react from 'react';
+import react, {useEffect, useState} from 'react';
+import { useSelector } from 'react-redux';
 import './ProfilePage.css';
 import Navbar2 from '../Navbar2/Navbar2';
 
-const ProfilePage = () =>
+function ProfilePage ()
 {
+
+    const token = useSelector(state => state.token);
+
+    useEffect(()=>{
+
+        console.log(token);
+        if(token){
+            fetch("http://localhost:4000/authenticate", {
+                // Adding body or contents to send
+                body: JSON.stringify({
+                    authtoken: 'hellook',
+                }),
+                
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                // Adding method type
+                method: "POST",
+                })
+                // Converting to JSON
+                .then((response) => response.json())
+
+                // Displaying results to console
+                .then((json) => {
+                    console.log(json);
+                });
+        }
+
+    },[token]);
+    
     var gender="Male";
     var dp_url= gender=="Male" ? "https://www.w3schools.com/howto/img_avatar.png" : "https://www.w3schools.com/howto/img_avatar2.png";
     var firstName="Prateek";

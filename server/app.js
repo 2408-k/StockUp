@@ -83,6 +83,8 @@ const User = require("./models/user");
 app.use("/signup", signupRoute);
 const payment = require("./routes/stripeGateway");
 app.use("/payment",payment);
+const authenticate = require("./routes/authenticate");
+app.use("/authenticate",authenticate);
 /*-------------------------------starting the server-----------------------------*/
 app.listen(4000, () => {
   console.log("Started the server!");
