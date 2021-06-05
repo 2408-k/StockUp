@@ -6,12 +6,13 @@ import ProfilePage from './components/ProfilePage/ProfilePage';
 import WalletPage from './components/WalletPage/WalletPage';
 import AddMoneyPage from './components/AddMoneyPage/AddMoneyPage';
 import RemoveMoneyPage from './components/RemoveMoneyPage/RemoveMoneyPage';
-
+import SellStockPage from './components/SellStockPage/SellStockPage';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/MyWallet" component={WalletPage} />
         <Route exact path="/AddMoney" component={AddMoneyPage} />
         <Route exact path="/RemoveMoney" component={RemoveMoneyPage} />
+        <Route exact path="/sellstock" component={SellStockPage} />
 
     </div>
   );

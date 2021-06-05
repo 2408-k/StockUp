@@ -8,7 +8,8 @@ const StockInfo = (props) => {
     symbol: "",
     price: 0,
   });
-  let searchedStock = props.targStock;
+  console.log(props);
+  let searchedStock = props.location.state.targStock;
   let url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${searchedStock}&apikey=BWT4ABPX5IJJC42I`;
 
   // using this as a componentDidMount
@@ -31,7 +32,7 @@ const StockInfo = (props) => {
   return (
     <div style={{ marginLeft: "33rem", marginTop: "16rem" }}>
       {props.buy && <BuyStockCard name={card.symbol} price={card.price} />}
-      {!props.buy && <SellStockCard name={card.symbol} price={card.price} />}
+      {!props.buy && <SellStockCard name={card.symbol} price={card.price} max={props.location.state.max} />}
     </div>
   );
 };

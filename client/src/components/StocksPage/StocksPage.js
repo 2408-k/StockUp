@@ -9,7 +9,7 @@ const StocksPage = () => {
     setTarStock(tar);
   };
   if (tarStock.trim().length != 0) {
-    return <StockInfo targStock={tarStock} />;
+    return <StockInfo buy={1} targStock={tarStock} />;
   }
   return (
     <div className="Stock">
