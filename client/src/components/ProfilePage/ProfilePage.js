@@ -7,10 +7,9 @@ function ProfilePage ()
 {
 
     const token = useSelector(state => state.token);
-
+    const [userData,setUserData]= useState({name : "default"});
     useEffect(()=>{
-
-        console.log(token);
+        //console.log(token);
         if(token){
             fetch("http://localhost:4000/authenticate", {
                 // Adding body or contents to send
@@ -30,6 +29,7 @@ function ProfilePage ()
                 // Displaying results to console
                 .then((json) => {
                     console.log(json);
+                    setUserData({name: json.name});
                 });
         }
 
@@ -37,7 +37,7 @@ function ProfilePage ()
     
     var gender="Male";
     var dp_url= gender=="Male" ? "https://www.w3schools.com/howto/img_avatar.png" : "https://www.w3schools.com/howto/img_avatar2.png";
-    var firstName="Prateek";
+    var firstName=userData.name;
     var lastName="Sharma";
     var emailID="prateeksharma7599@gmailcom";
     var userID="prateek1106";

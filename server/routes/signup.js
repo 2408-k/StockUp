@@ -37,7 +37,8 @@ router.post("/", (req, res) => {
             if (err) console.log(err);
             else {
               console.log(user.name, " added to db");
-              const temp = { username: user._id };
+              //console.log("user._id is ", user._id);
+              const temp = { userid: user._id };
               const token = jwt.sign(temp, process.env.JWT_SECRET);
               res.header("Access-Control-Allow-Origin", "*"); // to allow cors
               res.send(JSON.stringify({ token: token }));

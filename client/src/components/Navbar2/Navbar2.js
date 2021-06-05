@@ -9,7 +9,7 @@ export default function Navbar2() {
     <div class="wrapper">
             <nav>
                <div class="menu-icon">
-                  <i class="fa fa-bars fa-2x"></i>
+                  <i class=""></i>
                </div>
                <div class="logo">
                   LOGO
