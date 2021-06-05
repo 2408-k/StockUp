@@ -5,7 +5,7 @@ const app = express();
 const bcrypt = require("bcrypt");
 // importing db model
 const userProfile = require("../models/user");
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken"); 
 
 /*-------------------routes---------------------*/
 router.post("/", (req, res) => {
