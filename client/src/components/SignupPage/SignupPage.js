@@ -1,98 +1,93 @@
-import react from 'react';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Navbar2 from '../Navbar2/Navbar2';
-import SignupBox from '../SignupBox/SignupBox';
+import react from "react";
+import { useSelector } from "react-redux";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import Navbar2 from "../Navbar2/Navbar2";
+import SignupBox from "../SignupBox/SignupBox";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   navbar: {
-    zIndex: '1000',
+    zIndex: "1000",
   },
   loginBox: {
-      height: '90vh',
+    height: "90vh",
   },
   loginBoxInner: {
-    [theme.breakpoints.up('xs')]: {
-      margin: 'auto',
-      height: '80%',
-      width: '80%',
+    [theme.breakpoints.up("xs")]: {
+      margin: "auto",
+      height: "80%",
+      width: "80%",
     },
-    [theme.breakpoints.up('md')]: {
-      margin: 'auto',
-      height: '60%',
-      width: '60%'
+    [theme.breakpoints.up("md")]: {
+      margin: "auto",
+      height: "60%",
+      width: "60%",
     },
-    [theme.breakpoints.up('lg')]: {
-      margin: 'auto',
-      height: '60%',
-      width: '40%'
+    [theme.breakpoints.up("lg")]: {
+      margin: "auto",
+      height: "60%",
+      width: "40%",
     },
   },
   secondBox: {
-    height: '100vh',
-    width: '100 vw',
-    backgroundColor: '#dae1e7'
+    height: "100vh",
+    width: "100 vw",
+    backgroundColor: "#dae1e7",
   },
   thirdBox: {
-    height: '100vh',
-    width: '100 vw',
-    backgroundColor: '#1687a7'
+    height: "100vh",
+    width: "100 vw",
+    backgroundColor: "#1687a7",
   },
-  footer: {
-
-  },
-  footerArea1: {
-
-  },
-  footerArea2: {
-
-  },
-  footerArea3: {
-
-  },
-  footerBottom: {
-
-  }
+  footer: {},
+  footerArea1: {},
+  footerArea2: {},
+  footerArea3: {},
+  footerBottom: {},
 }));
 
 function SignupPage() {
   const classes = useStyles();
+  const isAuth = useSelector((state) => state.auth);
+  if (isAuth === 1) {
+    return <div>User is already logged in!</div>;
+  }
   return (
     <Grid container>
-      <Grid item xs={12} className={classes.navbar}> 
+      <Grid item xs={12} className={classes.navbar}>
         <Navbar2 />
       </Grid>
       <Grid item xs={0} sm={4} md={6} />
       <Grid item container xs={12} sm={8} md={6} className={classes.loginBox}>
-          <Grid item className={classes.loginBoxInner}>
-            <SignupBox />
-          </Grid>
+        <Grid item className={classes.loginBoxInner}>
+          <SignupBox />
+        </Grid>
       </Grid>
       <Grid item xs={12} className={classes.secondBox}>
         <h1> second area </h1>
       </Grid>
-      <Grid item xs= {12} className={classes.thirdBox}>
+      <Grid item xs={12} className={classes.thirdBox}>
         <h1> Third area </h1>
       </Grid>
 
-      {/* Footer */} 
+      {/* Footer */}
       <Grid item xs={12} container className={classes.footer}>
-        <Grid item xs={12} md={4} className={classes.footerArea1} >
+        <Grid item xs={12} md={4} className={classes.footerArea1}>
           footer area 1
-        </Grid > 
-        <Grid item xs={12} md={4} className={classes.footerArea2} >
+        </Grid>
+        <Grid item xs={12} md={4} className={classes.footerArea2}>
           footer area 2
-        </Grid> 
-        <Grid item xs={12} md={4} className={classes.footerArea3} >
+        </Grid>
+        <Grid item xs={12} md={4} className={classes.footerArea3}>
           footer area 3
-        </Grid > 
+        </Grid>
       </Grid>
       <Grid item xs={12} className={classes.footerBottom}>
-          Copyright 2021 
+        Copyright 2021
       </Grid>
     </Grid>
-    );
+  );
 }
 
 export default SignupPage;

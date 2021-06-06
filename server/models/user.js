@@ -7,7 +7,6 @@ const userSchema = new mongoose.Schema ({
     password: String,
     stocks: [ {
       name: String,
-      id: Number,
       quantity: Number
     } ]
   });

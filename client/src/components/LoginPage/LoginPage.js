@@ -1,4 +1,5 @@
 import react from 'react';
+import { useSelector } from "react-redux";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -58,6 +59,10 @@ const useStyles = makeStyles(theme => ({
 
 function Loginpage() {
   const classes = useStyles();
+  const isAuth = useSelector((state) => state.auth);
+  if (isAuth === 1) {
+    return <div>User is already logged in!</div>;
+  }
   return (
     <Grid container>
       <Grid item xs={12} className={classes.navbar}> 

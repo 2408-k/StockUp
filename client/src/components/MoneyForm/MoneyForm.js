@@ -29,7 +29,7 @@ const MoneyForm = (props) => {
           <input type="text" value={money} onChange={moneyChangeHandler} />
         </div>
 
-        <button type="submit" className="btn btn-success add-button  buttons">Submit</button>
+        <button type="submit" className="btn btn-primary add-button  buttons">Submit</button>
 
       </form>
     </div>

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import "./StripeGateway.css";
 const StripeGateway = (props) => {
+  const tokeni = useSelector((state) => state.token);
   const product = {
     name: "Add amount to wallet",
     price: props.moneyWallet,
   };
-  console.log(product);
   const makePayment = (token) => {
     const body = {
       token, // this consists of publishable key and other stripe related info
@@ -25,8 +26,34 @@ const StripeGateway = (props) => {
       .then((response) => {
         console.log("RESPONSE ", response);
         const { status } = response;
-        if (status === 200) console.log("STATUS ", status);
-        props.targetted("");
+        if (status === 200) {
+          console.log("STATUS ", status);
+          props.targetted("");
+          //add money to wallet if stripe is succesful
+          if (tokeni) {
+            fetch("http://localhost:4000/wallet", {
+              // Adding body or contents to send
+              body: JSON.stringify({
+                authtoken: tokeni,
+                name: "test",
+                amt: product.price,
+              }),
+
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+              // Adding method type
+              method: "POST",
+            })
+              // Converting to JSON
+              .then((response) => response.json())
+
+              // Displaying results to console
+              .then((json) => {
+                console.log(json);
+              });
+          }
+        }
       })
       .catch((error) => console.log(error));
   };
@@ -39,7 +66,7 @@ const StripeGateway = (props) => {
         name="Add money to wallet"
         amount={product.price * 100}
       >
-        <button className="btn-large blue">Pay {product.price} $</button>
+        <button className="btn btn-primary">Pay {product.price} $</button>
       </StripeCheckout>
     </div>
   );

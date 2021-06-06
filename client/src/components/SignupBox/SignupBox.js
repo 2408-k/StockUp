@@ -81,6 +81,8 @@ export default function SignupBox(props) {
       .then((json) => {
         //console.log(json.token);
         dispatch({ type: 'update' , token : json.token });
+        dispatch({ type: "login" });
+        localStorage.setItem('token',json.token);
       });
   };
   return (

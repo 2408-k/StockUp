@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import BuyStockCard from "../BuyStockCard/BuyStockCard";
 import SellStockCard from "../SellStockCard/SellStockCard";
 import axios from "axios";
@@ -11,7 +12,6 @@ const StockInfo = (props) => {
   console.log(props);
   let searchedStock = props.location.state.targStock;
   let url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${searchedStock}&apikey=BWT4ABPX5IJJC42I`;
-
   // using this as a componentDidMount
   useEffect(() => {
     axios.get(url).then((res) => {
@@ -28,11 +28,20 @@ const StockInfo = (props) => {
       }); // end of setcard
     }); //end of axios
   }, []); //end of useEffect
-
+  const isAuth = useSelector((state) => state.auth);
+  if (isAuth === 0) {
+    return <div>User not logged in!</div>;
+  }
   return (
     <div style={{ marginLeft: "33rem", marginTop: "16rem" }}>
       {props.buy && <BuyStockCard name={card.symbol} price={card.price} />}
-      {!props.buy && <SellStockCard name={card.symbol} price={card.price} max={props.location.state.max} />}
+      {!props.buy && (
+        <SellStockCard
+          name={card.symbol}
+          price={card.price}
+          max={props.location.state.max}
+        />
+      )}
     </div>
   );
 };

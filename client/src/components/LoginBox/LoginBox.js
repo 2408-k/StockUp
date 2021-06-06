@@ -77,6 +77,8 @@ export default function LoginBox() {
       .then((json) => {
         //console.log(json);
         dispatch({ type: 'update' , token : json.token });
+        localStorage.setItem('token',json.token);
+        dispatch({ type: "login" });
       });
   };
 
