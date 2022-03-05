@@ -1,0 +1,36 @@
+.home-section{
+    background-color: antiquewhite;
+    margin-top: 10.5vh;
+}
+
+.center-div-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stockup-heading-box{
+    padding-top: 25vh;
+}
+
+.signup-box{
+    padding-top: 15vh;
+    padding-bottom: 10vh;
+}
+.signup-component{
+    width: 60%;
+}
+
+.heading-box{
+    display: block;
+}
+
+.stockup-heading{
+    font-size: 8vh;
+    color: blueviolet;
+}
+
+.stockup-subheading{
+    font-size:2vh;
+    color: blue;
+}

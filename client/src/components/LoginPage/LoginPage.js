@@ -1,4 +1,3 @@
-import react from 'react';
 import { useSelector } from "react-redux";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,97 +5,34 @@ import Container from '@material-ui/core/Container';
 import Navbar2 from '../Navbar2/Navbar2';
 import LoginBox from '../LoginBox/LoginBox';
 
-const useStyles = makeStyles(theme => ({
-  navbar: {
-    zIndex: '1000',
-  },
-  loginBox: {
-      height: '90vh',
-  },
-  loginBoxInner: {
-    [theme.breakpoints.up('xs')]: {
-      margin: 'auto',
-      height: '80%',
-      width: '80%',
-    },
-    [theme.breakpoints.up('md')]: {
-      margin: 'auto',
-      height: '60%',
-      width: '60%'
-    },
-    [theme.breakpoints.up('lg')]: {
-      margin: 'auto',
-      height: '60%',
-      width: '40%'
-    },
-  },
-  secondBox: {
-    height: '100vh',
-    width: '100 vw',
-    backgroundColor: '#dae1e7'
-  },
-  thirdBox: {
-    height: '100vh',
-    width: '100 vw',
-    backgroundColor: '#1687a7'
-  },
-  footer: {
-
-  },
-  footerArea1: {
-
-  },
-  footerArea2: {
-
-  },
-  footerArea3: {
-
-  },
-  footerBottom: {
-
-  }
-}));
-
 function Loginpage() {
-  const classes = useStyles();
+
   const isAuth = useSelector((state) => state.auth);
+
   if (isAuth === 1) {
     return <div>User is already logged in!</div>;
   }
   return (
-    <Grid container>
-      <Grid item xs={12} className={classes.navbar}> 
-        <Navbar2 />
-      </Grid>
-      <Grid item xs={0} sm={4} md={6} />
-      <Grid item container xs={12} sm={8} md={6} className={classes.loginBox}>
-          <Grid item className={classes.loginBoxInner}>
-            <LoginBox />
-          </Grid>
-      </Grid>
-      <Grid item xs={12} className={classes.secondBox}>
-        <h1> second area </h1>
-      </Grid>
-      <Grid item xs= {12} className={classes.thirdBox}>
-        <h1> Third area </h1>
-      </Grid>
+    <div class="">
 
-      {/* Footer */} 
-      <Grid item xs={12} container className={classes.footer}>
-        <Grid item xs={12} md={4} className={classes.footerArea1} >
-          footer area 1
-        </Grid > 
-        <Grid item xs={12} md={4} className={classes.footerArea2} >
-          footer area 2
-        </Grid> 
-        <Grid item xs={12} md={4} className={classes.footerArea3} >
-          footer area 3
-        </Grid > 
-      </Grid>
-      <Grid item xs={12} className={classes.footerBottom}>
-          Copyright 2021 
-      </Grid>
-    </Grid>
+      <div class="navbar-login-page"> 
+        <Navbar2 />
+      </div>
+
+      <div class="section-1">
+        section 1
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4 col-md-6"/>
+        <div class="col-xs-12 col-sm-8 col-md-6 login-Box-Area">
+            <div class="login-Box-Inner">
+              <LoginBox />
+            </div>
+        </div>
+      </div>
+    
+    </div>
     );
 }
 

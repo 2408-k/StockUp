@@ -1,8 +1,8 @@
 .logo {
-      line-height: 60px;
+      line-height: 6.5vh;
       position: fixed;
       float: left;
-      margin: 16px 46px;
+      margin: 2vh 46px;
       color: darkblue;
       font-weight: bold;
       font-size: 20px;
@@ -12,12 +12,12 @@
 nav {
       position: fixed;
       width: 100vw;
-      line-height: 60px;
+      line-height: 6.5vh;
       z-index: 1000;
 }
 
 nav ul {
-      line-height: 60px;
+      line-height: 6.5vh;
       list-style: none;
       background: transparent;
       overflow: hidden;
@@ -43,17 +43,17 @@ nav.black ul li a{
 
 nav ul li {
       display: inline-block;
-      padding: 16px 40px;;
+      padding: 2vh 40px;
 }
 
 nav ul li a {
       text-decoration: none;
       color: black;
-      font-size: 16px;
+      font-size: 2vh;
 } 
 
 .menu-icon {
-      line-height: 60px;
+      line-height: 6.5vh;
       width: 100%;
       background: #03506f;
       text-align: right;
@@ -69,7 +69,7 @@ nav ul li a {
       .logo {
             position: fixed;
             top: 0;
-            margin-top: 16px;
+            margin-top: 2vh;
       }
 
       nav ul {

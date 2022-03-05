@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Navbar2 from "../Navbar2/Navbar2";
 import SignupBox from "../SignupBox/SignupBox";
+import './SignupPage.css';
 
 const useStyles = makeStyles((theme) => ({
   navbar: {
@@ -12,39 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
   loginBox: {
     height: "90vh",
-  },
-  loginBoxInner: {
-    [theme.breakpoints.up("xs")]: {
-      margin: "auto",
-      height: "80%",
-      width: "80%",
-    },
-    [theme.breakpoints.up("md")]: {
-      margin: "auto",
-      height: "60%",
-      width: "60%",
-    },
-    [theme.breakpoints.up("lg")]: {
-      margin: "auto",
-      height: "60%",
-      width: "40%",
-    },
-  },
-  secondBox: {
-    height: "100vh",
-    width: "100 vw",
-    backgroundColor: "#dae1e7",
-  },
-  thirdBox: {
-    height: "100vh",
-    width: "100 vw",
-    backgroundColor: "#1687a7",
-  },
-  footer: {},
-  footerArea1: {},
-  footerArea2: {},
-  footerArea3: {},
-  footerBottom: {},
+  }
 }));
 
 function SignupPage() {
@@ -54,16 +23,36 @@ function SignupPage() {
     return <div>User is already logged in!</div>;
   }
   return (
-    <Grid container>
-      <Grid item xs={12} className={classes.navbar}>
-        <Navbar2 />
-      </Grid>
-      <Grid item xs={0} sm={4} md={6} />
-      <Grid item container xs={12} sm={8} md={6} className={classes.loginBox}>
-        <Grid item className={classes.loginBoxInner}>
-          <SignupBox />
-        </Grid>
-      </Grid>
+    <div className="wrapper">
+
+      <div className="row">
+        <div className={classes.navbar}>
+          <Navbar2/>  
+        </div>
+      </div>
+
+      <div id="home" className="home-section row">
+        <div className="stockup-heading-box col-xs-12 col-md-6 col-lg-7">
+          <div className="center-div-box">
+            <div className="heading-box">
+              <div className="stockup-heading">
+                StockUp
+              </div>
+              <div className="stockup-subheading">
+                A Real Time Stock Trading Application
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="signup-box col-xs-12 col-md-6 col-lg-5">
+          <div className="center-div-box">
+              <div className="signup-component">
+                <SignupBox/> 
+              </div>
+          </div>
+        </div>
+       </div>
+
       <Grid item xs={12} className={classes.secondBox}>
         <h1> second area </h1>
       </Grid>
@@ -86,7 +75,7 @@ function SignupPage() {
       <Grid item xs={12} className={classes.footerBottom}>
         Copyright 2021
       </Grid>
-    </Grid>
+    </div>
   );
 }
 
